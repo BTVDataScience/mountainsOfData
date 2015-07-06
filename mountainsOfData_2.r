@@ -93,6 +93,30 @@ eqscplot(dat4$dist, dat4$elev * 2,
          ## nothing but the line!
          xaxt = "n", yaxt = "n", xlab = "", ylab = "", bty = "n")
 for(i in 1:nchar(tagLine)){
+  text(letterElev$x[i],
+       letterElev$y[i] * 2,
+       adj = c(0.5, -1),
+       family = "mono", font = 2,
+       labels = substr(tagLine, start = i, stop = i),
+       cex = 2.5, col = thisColor)
+}
+text(x = median(range(dat4$dist)),
+     y = median(range(dat4$elev)) * 2,
+     adj = c(0.5, 0.5),
+     labels = "Burlington\n\nData Scientists",
+     cex = 10.75)
+dev.off()
+
+## and here's a square one
+png(filename = "logoExaggeratedSquare.png", width = 960, height = 960)
+eqscplot(dat4$dist, dat4$elev * 2,
+         type = "l",
+         lwd = 15,
+         lend = "square",
+         col = thisColor,
+         ## nothing but the line!
+         xaxt = "n", yaxt = "n", xlab = "", ylab = "", bty = "n")
+for(i in 1:nchar(tagLine)){
     text(letterElev$x[i],
          letterElev$y[i] * 2,
          adj = c(0.5, -1),
