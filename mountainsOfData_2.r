@@ -130,3 +130,16 @@ text(x = median(range(dat4$dist)),
      labels = "Burlington\n\nData Scientists",
      cex = 10.75)
 dev.off()
+
+## sparkline; 12 point font = 1/6 inch characters
+## the elevation range should span 1/6 inch ...
+diff(range(dat4$elev))
+## ... so the distance range should span:
+(diff(range(dat4$dist))/diff(range(dat4$elev)))/8
+## however, it seems everything needs to be compressed a little
+png(filename = "logoSparkline.png", width = 11/8, height = 1/8, units = "in", res = 480)
+par(mar = rep(0, 4))
+eqscplot(dat4$dist, dat4$elev,
+         type = "l",
+         xaxt = "n", yaxt = "n", xlab = "", ylab = "", bty = "n")
+dev.off()
